@@ -9,7 +9,7 @@ and challenges you to generate insights for **forecasting, customer behavior, an
 ---
 
 ##  Dataset
-File: [`data.sql`](./dataset/dataset.sql)
+File: [`data.sql`](./dataset/data.sql)
 Contains table creation scripts and sample data
 
 Schema: **cloud_bank**
