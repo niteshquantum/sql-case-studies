@@ -4,7 +4,7 @@
 DMart, a fresh produce retailer, switched to sustainable packaging in June 2020. This case study analyzes the impact of this change on sales across regions, platforms, customer segments, and demographics, aiming to identify trends and strategies to mitigate future disruptions.
 
 ## Dataset Description
-- **File**: `dataset/data.sql`
+- **File**: [`data.sql`](dataset/data.sql)
 - **Schema**: `dmart.qt`
 - **Table**: `weekly_sales`
   - **Columns**:
