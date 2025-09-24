@@ -10,3 +10,4 @@ This repository contains multiple SQL case studies solved using Microsoft SQL Se
 5. [Case 05: Cloud Bank](case05_cloudbank/README.md)
 6. [Case 06: E-Commerce User Engagement and Campaign Analysis](case06_E_commerce_user_engagement/README.md)
 7. [Case 07: DMart Sustainable Packaging Impact Analysis](case07_dmart_ecosales/README.md)
+8. [Case 08: Add AdInsight Customer Interest Analytics](case08_adInsight_analytics/README.md)
