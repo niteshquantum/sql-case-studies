@@ -12,4 +12,5 @@ This repository contains multiple SQL case studies solved using Microsoft SQL Se
 7. [Case 07: DMart Sustainable Packaging Impact Analysis](case07_dmart_ecosales/README.md)
 8. [Case 08: Add AdInsight Customer Interest Analytics](case08_adInsight_analytics/README.md)
 9. [Case 09: Clothing Retail Insights](case09_clothing_retail_insights/README.md)
-10. [Case 10:Chinook Music Store](case10_chinook_music_store/README.md)
+10. [Case 10: Chinook Music Store](case10_chinook_music_store/README.md)
+11. [Case 11: Bike Rental](case11_bike_rent)
