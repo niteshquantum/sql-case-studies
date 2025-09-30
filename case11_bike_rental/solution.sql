@@ -34,10 +34,17 @@ from bike
 group by category;
 
 -- question 5: calculate total rental revenue by month, year, and all-time, sorted chronologically
-select year(start_timestamp) as year, month(start_timestamp) as month, sum(total_paid) as revenue
+select 
+    year(start_timestamp) as year,
+    month(start_timestamp) as month,
+    sum(total_paid) as revenue
 from rental
-group by year(start_timestamp), month(start_timestamp) with rollup
-order by year, month;
+group by rollup (year(start_timestamp), month(start_timestamp))
+order by 
+    case when year(start_timestamp) is null then 1 else 0 end,
+    year(start_timestamp),
+    case when month(start_timestamp) is null then 1 else 0 end,
+    month(start_timestamp);
 
 -- question 6: calculate total membership revenue by year, month, and membership type, sorted by year, month, and type
 select year(m.start_date) as year, month(m.start_date) as month, mt.name as membership_type_name, sum(m.total_paid) as total_revenue
@@ -51,22 +58,20 @@ select mt.name as membership_type_name, month(m.start_date) as month, sum(m.tota
 from membership m
 join membership_type mt on m.membership_type_id = mt.id
 where year(m.start_date) = 2023
-group by mt.name, month(m.start_date) with rollup
-order by membership_type_name, month;
+group by mt.name, month(m.start_date) with rollup;
 
 -- question 8: segment customers by rental count into categories and count customers in each
 select 
-case 
-when count(r.id) > 10 then 'more than 10'
-when count(r.id) between 5 and 10 then 'between 5 and 10'
-else 'fewer than 5'
-end as rental_count_category,
-count(distinct c.id) as number_of_customers
-from customer c
-left join rental r on c.id = r.customer_id
-group by 
-case 
-when count(r.id) > 10 then 'more than 10'
-when count(r.id) between 5 and 10 then 'between 5 and 10'
-else 'fewer than 5'
-end;
+    t.rental_category as rental_count_category,
+    count(t.customer_id) as number_of_customers 
+from (
+    select r.customer_id,count(*) as rental_count,
+        case 
+            when count(*) > 10 then 'more than 10' 
+            when count(*) >= 5 then 'between 5 and 10'
+            else 'fewer than 5'
+        end as rental_category  
+    from rental r 
+    group by r.customer_id
+) t
+group by t.rental_category;
